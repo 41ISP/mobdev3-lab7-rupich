@@ -5,8 +5,8 @@ let result = 0
 
 function handleButton(button) {
     const value = button.target.textContent; 
-    const res = currentExpression.replaceAll("×","*").replaceAll("÷","/").replaceAll("−","-")
     if (value === '=') {
+         const res = currentExpression.replaceAll("×","*").replaceAll("÷","/").replaceAll("−","-")
         result = eval(res);
         display.textContent = result;
         currentExpression = result;
@@ -14,15 +14,20 @@ function handleButton(button) {
         currentExpression = '';
          display.textContent = '0';
     } else if ( value === '%'){ 
+         const res = currentExpression.replaceAll("×","*").replaceAll("÷","/").replaceAll("−","-")
         result = eval(res);
         result = result /100;
          display.textContent = result;
         currentExpression = result;
     } else if (value === '+/-'){  
+         const res = currentExpression.replaceAll("×","*").replaceAll("÷","/").replaceAll("−","-")
         result = eval(res);
          display.textContent = result;
         currentExpression = result;
-    } else {
+    } else if(display.textContent === '0'){
+         display.textContent = value;
+         currentExpression = value;
+    }else {
         display.textContent += value;
         currentExpression += value;
     }
